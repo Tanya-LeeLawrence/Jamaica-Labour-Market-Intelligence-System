@@ -280,16 +280,7 @@ if predict:
     
     # GDP DISPLAY
     
-
-    # GDP_GROWTH is already a percentage value if the
-    # macro dataset stores GDP growth as e.g. 2.5 rather
-    # than 0.025.
-    #
-    # Therefore DO NOT multiply by 100 here.
-    #
-    # The formatting below is display-only and does not
-    # modify the value supplied to the model.
-
+    st.write("Raw GDP Growth:", gdp_growth)
     if pd.notna(gdp_growth):
 
         gdp_display = f"{float(gdp_growth):.2f}%"
