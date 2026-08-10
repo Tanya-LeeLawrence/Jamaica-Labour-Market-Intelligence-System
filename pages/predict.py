@@ -40,12 +40,12 @@ with col1:
     )
 
     sex_name = st.selectbox(
-        "Sex",
+        "Gender",
         list(sex_mapping.keys())
     )
 
     parish_name = st.selectbox(
-        "Parish",
+        "Parish of Work",
         list(parish_mapping.keys())
     )
 
@@ -76,7 +76,7 @@ with col2:
 )
 
     year = st.selectbox(
-        "Survey Year",
+        "Year",
         year_options
     )
 
