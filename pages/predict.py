@@ -62,20 +62,84 @@ with col2:
         list(relationship_mapping.keys())
     )
 
-    income_group = st.selectbox(
-        "Income Category",
-        [
-            "Low",
-            "Middle",
-            "High"
-        ]
-    )
+# Income Category
+st.subheader("Income Category")
 
-    year_options = sorted(
+st.caption(
+    "Select the income category that best describes the individual."
+)
+
+# Set default selection
+if "income_group" not in st.session_state:
+    st.session_state.income_group = "Middle"
+
+col1, col2, col3 = st.columns(3)
+
+
+# Low Income
+
+with col1:
+
+    if st.session_state.income_group == "Low":
+        st.success("### ✓ Low Income")
+        st.caption("Selected")
+
+    else:
+        if st.button(
+            "Low Income",
+            key="income_low",
+            use_container_width=True
+        ):
+            st.session_state.income_group = "Low"
+            st.rerun()
+
+# Middle Income
+
+with col2:
+
+    if st.session_state.income_group == "Middle":
+        st.success("### ✓ Middle Income")
+        st.caption("Selected")
+
+    else:
+        if st.button(
+            "Middle Income",
+            key="income_middle",
+            use_container_width=True
+        ):
+            st.session_state.income_group = "Middle"
+            st.rerun()
+
+# High Income
+
+with col3:
+
+    if st.session_state.income_group == "High":
+        st.success("### ✓ High Income")
+        st.caption("Selected")
+
+    else:
+        if st.button(
+            "High Income",
+            key="income_high",
+            use_container_width=True
+        ):
+            st.session_state.income_group = "High"
+            st.rerun()
+
+# Store selected category
+income_group = st.session_state.income_group
+
+# Display current selection
+st.info(
+    f"Selected Income Category: **{income_group}**"
+)
+
+year_options = sorted(
     macro["Year"].dropna().astype(int).unique()
 )
 
-    year = st.selectbox(
+year = st.selectbox(
         "Year",
         year_options
     )
