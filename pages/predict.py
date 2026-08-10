@@ -272,11 +272,11 @@ if predict:
     if (
         pd.notna(current_gdp)
         and not previous_gdp_rows.empty
-        and pd.notna(previous_gdp_rows.iloc[0]["GDP"])
-        and previous_gdp_rows.iloc[0]["GDP"] != 0
+        and pd.notna(previous_gdp_rows.iloc[0]["GDP_GROWTH"])
+        and previous_gdp_rows.iloc[0]["GDP_GROWTH"] != 0
     ):
 
-        previous_gdp = previous_gdp_rows.iloc[0]["GDP"]
+        previous_gdp = previous_gdp_rows.iloc[0]["GDP_GROWTH"]
 
         gdp_growth = (
             (float(current_gdp) - float(previous_gdp))
