@@ -260,9 +260,32 @@ if predict:
     # Get macro values
     
 
-    gdp_growth = macro_row[
-        "GDP_GROWTH"
-    ]
+    # Calculate GDP growth for display
+current_year = int(macro_row["Year"])
+
+current_gdp = macro_row["GDP"]
+
+previous_gdp_rows = macro[
+    macro["Year"].astype(int) == current_year - 1
+]
+
+if (
+    pd.notna(current_gdp)
+    and not previous_gdp_rows.empty
+    and pd.notna(previous_gdp_rows.iloc[0]["GDP"])
+    and previous_gdp_rows.iloc[0]["GDP"] != 0
+):
+
+    previous_gdp = previous_gdp_rows.iloc[0]["GDP"]
+
+    gdp_growth = (
+        (float(current_gdp) - float(previous_gdp))
+        / float(previous_gdp)
+    ) * 100
+
+else:
+
+    gdp_growth = None
 
     inflation = macro_row[
         "Average_Annual_Inflation_Rate_AF"
@@ -283,7 +306,7 @@ if predict:
     
     if pd.notna(gdp_growth):
 
-        gdp_display = f"{float(gdp_growth)* 100:.2f}%"
+        gdp_display = f"{float(gdp_growth):.2f}%"
 
     else:
 
