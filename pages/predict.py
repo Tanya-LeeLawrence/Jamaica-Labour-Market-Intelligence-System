@@ -263,7 +263,7 @@ if predict:
     # Calculate GDP growth for display
     current_year = int(macro_row["Year"])
 
-    current_gdp = macro_row["GDP"]
+    current_gdp = macro_row["GDP_GROWTH"]
 
     previous_gdp_rows = macro[
         macro["Year"].astype(int) == current_year - 1
