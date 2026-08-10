@@ -1,0 +1,28 @@
+definition_version: 1
+entities:
+  streamlit_app:
+    type: streamlit
+    identifier:
+      database: SNOWFLAKE_APPS
+      schema: PUBLIC
+      name: CAPSTONE
+    title: Jamaica Labour Market Intelligence System
+    query_warehouse: COMPUTE_WH
+    compute_pool: SYSTEM_COMPUTE_POOL_CPU
+    run_mode: SpcsOnly
+    execute_as: OWNER
+    main_file: home.py
+    external_access_integrations:
+      - PYPI_ACCESS_INTEGRATION
+      - PYPI_EAI
+    artifacts:
+      - home.py
+      - pyproject.toml
+      - .streamlit/
+      - pages/
+      - utils/
+      - data/
+      - models/
+    sharing:
+      - role: USERADMIN
+        with_grant_option: false
