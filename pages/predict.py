@@ -280,10 +280,10 @@ if predict:
     
     # GDP DISPLAY
     
-    st.write("Raw GDP Growth:", gdp_growth)
+    
     if pd.notna(gdp_growth):
 
-        gdp_display = f"{float(gdp_growth):.2f}%"
+        gdp_display = f"{float(gdp_growth)* 100:.2f}%"
 
     else:
 
